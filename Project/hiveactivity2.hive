@@ -1,0 +1,4 @@
+CREATE TABLE episodeIVluke (name STRING, line STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' TBLPROPERTIES ("skip.header.line.count"="2");
+LOAD DATA LOCAL INPATH 'episodeIV_dialouges.txt' INTO TABLE episodeIVluke;
+INSERT OVERWRITE DIRECTORY '/user/kalai/hiveactivityluke1' SELECT COUNT(*) FROM episodeIVluke WHERE INSTR(line, 'Luke')>0;
+
