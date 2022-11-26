@@ -1,0 +1,15 @@
+
+ CREATE TABLE txtfiles (line STRING);
+
+
+ LOAD DATA LOCAL INPATH '/file01.txt' INTO TABLE txtfiles;
+
+ 
+ CREATE TABLE word_count AS
+       SELECT word, count(1) AS count FROM
+       (SELECT explode(split(line, ' ')) AS word FROM files) w
+       GROUP BY word
+      ORDER BY word;
+ 
+INSERT OVERWRITE LOCAL DIRECTORY '/salescsv/activity4' SELECT * FROM word_count;
+

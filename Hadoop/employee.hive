@@ -1,0 +1,8 @@
+show databases;
+ create database Emp;
+ use Emp;
+ CREATE TABLE Employee (id INT, name STRING, dept STRING, yoj INT, salary INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' TBLPROPERTIES ("skip.header.line.count"="1");
+ DESCRIBE Employee;
+ LOAD DATA LOCAL INPATH  '/salescsv/EmpData.csv' INTO TABLE Employee;
+ SELECT * FROM Employee;
+ SELECT COUNT(*) FROM Employee;
